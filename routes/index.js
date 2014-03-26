@@ -35,7 +35,7 @@ module.exports = function(app) {
 	// 	})
 	// });
 	app.get('/login', function(req, res){
-		res.redirect(back);
+		res.redirect('back');
 	});
 
 	app.post('/login', checkNotLogin);
@@ -49,11 +49,11 @@ module.exports = function(app) {
 		User.get(req.body.id, function(err, user) {
 			if (!user) {
 				req.flash('error', '用户不存在!'); 
-  				return res.redirect('/login');
+  				return res.redirect('back');
 			}
 			if (user.password != password) {
 				req.flash('error', '密码错误!'); 
-  				return res.redirect('/login');
+  				return res.redirect('back');
 			}
 			req.session.user = user;
 		    req.flash('success', '登陆成功!');
