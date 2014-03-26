@@ -5,16 +5,45 @@
 	<title>Blog</title>
 	<title><%= title %></title>
 	<link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body>
 	<div class="container">
-		<ul class="nav nav-tabs">
-			<li <% if ((chosen) == 'index') { %> class = "active" <% } %> > <a href= <% if ((chosen) == 'index')  {%>"#" <%} else { %> "/" <%}%> >Index</a></li>
-			<li <% if ((chosen) == 'login') { %> class = "active" <% } %> > <a href= <% if ((chosen) == 'login')  {%>"#" <%} else { %> "/login" <%}%> >Login</a></li>
-			<li <% if ((chosen) == 'reg') { %> class = "active" <% } %> > <a href= <% if ((chosen) == 'reg')  {%>"#" <%} else { %> "/reg" <%}%> >Reg</a></li>
-			<li><a href="/logout">Logout</a></li>
-		</ul>
+
+		<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">Forum</a>
+				</div>
+
+				<div class="navbar-collapse collapse">
+					<% if (user) {%>
+						<form class="navbar-form navbar-right" role="form" action="/logout">
+							<button type="submit" class="btn btn-success">Log out</button>
+						</form>
+					<% } else {%>
+
+					<form class="navbar-form navbar-right" method="post" role="form" action="/login">
+						<div class="form-group">
+							<input type="text" placeholder="UserID" class="form-control" name="userid">
+						</div>
+						<div class="form-group">
+							<input type="password" placeholder="Password" class="form-control" name="password">
+						</div>
+						<button type="submit" class="btn btn-success">Log in</button>
+						<a href="/reg" class="btn btn-success">Sign in</a>
+					</form>
+					<% } %>
+				</div><!--/.navbar-collapse -->
+			</div>
+		</div>
+
 		<br>
 		<% if (success) { %>
 		<div class="alert alert-success">

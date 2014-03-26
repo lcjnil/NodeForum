@@ -19,22 +19,30 @@ module.exports = function(app) {
 			title : 'Index',
 			chosen : 'index',
 			success: req.flash('success').toString(),
-			error: req.flash('error').toString()
+			error: req.flash('error').toString(),
+			user: req.session.user
 		})
 	});
 
-	app.get('/login', checkNotLogin);
+	// app.get('/login', checkNotLogin);
+	// app.get('/login', function(req, res){
+	// 	res.render('login', {
+	// 		title: "Login",
+	// 		chosen: 'login',
+	// 		success: req.flash('success').toString(),
+	// 		error: req.flash('error').toString(),
+	// 		user: req.session.user
+	// 	})
+	// });
 	app.get('/login', function(req, res){
-		res.render('login', {
-			title: "Login",
-			chosen: 'login',
-			success: req.flash('success').toString(),
-			error: req.flash('error').toString()
-		})
+		res.redirect(back);
 	});
 
 	app.post('/login', checkNotLogin);
 	app.post('/login', function(req, res) {
+		if (req.body.userid.length==0 || req.body.password==0) {
+			return res.redirect('/');
+		}
 		var md5 = crypto.createHash('md5'), 
 			password = md5.update(req.body.password).digest('hex');
 		//Get Password
@@ -49,7 +57,7 @@ module.exports = function(app) {
 			}
 			req.session.user = user;
 		    req.flash('success', '登陆成功!');
-		    res.redirect('/');
+		    return res.redirect('/');
 		})	
 	});
 
@@ -57,7 +65,7 @@ module.exports = function(app) {
 	app.get('/logout', function(req, res) {
 		req.session.user = null;
 		req.flash('success', '登出成功!');
-		res.redirect('/');
+		return res.redirect('/');
 	});
 
 	app.get('/reg', checkNotLogin);
@@ -66,11 +74,12 @@ module.exports = function(app) {
 			title: 'Register',
 			chosen: 'reg',
 			success: req.flash('success').toString(),
-			error: req.flash('error').toString()
+			error: req.flash('error').toString(),
+			user: req.session.user
 		});
 	});
 
-	app.get('reg', checkNotLogin);
+	app.post('/reg', checkNotLogin);
 	app.post('/reg', function(req, res) {
 		var password = req.body.password,
 			repeatpassword = req.body.repeatpassword;
@@ -100,7 +109,7 @@ module.exports = function(app) {
 				}
 				req.session.user = newUser;//用户信息存入 session
 			    req.flash('success', '注册成功!');
-			    res.redirect('/');//注册成功后返回主页
+			    return res.redirect('/');//注册成功后返回主页
 			});
 		});
 	});//END app.post(reg)	
