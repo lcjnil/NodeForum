@@ -3,21 +3,18 @@
 目前是alpha中的alpha
 ##路由
 ###已完成：
-/ index
-/login 登陆界面
-/logout 退出
-/reg 注册界面
- * userid
- * password
- * repeatpassword
+/ - index
+/login - 登陆界面
+/logout - 退出
+/reg - 注册界面
 
 ###待加入：
-/user 全部用户信息页面
-/user/setting 用户信息设置
-/user/find 用户查找
-/user/[USERNAME] 个人主页
-/[FORUMNAME] 每个论坛板块的页面
-/[FORUMNAME]/[THREADID] 每个帖子的页面
+/user - 全部用户信息页面
+/user/setting - 用户信息设置
+/user/find - 用户查找
+/user/USERNAME - 个人主页
+/FORUMNAME - 每个论坛板块的页面
+/FORUMNAME/THREADID - 每个帖子的页面
 
 ## 数据库
 基于MongoDB
