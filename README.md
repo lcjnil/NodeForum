@@ -1,8 +1,6 @@
 #说明
 基于Node.js MongoDB Bootstrap
 目前是alpha中的alpha
-搞定了
-* 用户登陆
 ##路由
 ###已完成：
 / index
