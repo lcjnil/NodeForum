@@ -57,7 +57,7 @@ module.exports = function(app) {
 			}
 			req.session.user = user;
 		    req.flash('success', '登陆成功!');
-		    return res.redirect('/');
+		    res.redirect('/');
 		})	
 	});
 
@@ -65,7 +65,7 @@ module.exports = function(app) {
 	app.get('/logout', function(req, res) {
 		req.session.user = null;
 		req.flash('success', '登出成功!');
-		return res.redirect('/');
+		res.redirect('/');
 	});
 
 	app.get('/reg', checkNotLogin);
@@ -109,7 +109,7 @@ module.exports = function(app) {
 				}
 				req.session.user = newUser;//用户信息存入 session
 			    req.flash('success', '注册成功!');
-			    return res.redirect('/');//注册成功后返回主页
+			    res.redirect('/');//注册成功后返回主页
 			});
 		});
 	});//END app.post(reg)	
