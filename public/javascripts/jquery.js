@@ -1,0 +1,1 @@
+/home/nil/workspace/node/forum/public/javascripts/bootstrap.min.js

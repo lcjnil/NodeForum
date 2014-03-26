@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Blog</title>
+	<title><%= title %></title>
+	<link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="container">
+		<ul class="nav nav-tabs">
+			<li <% if ((chosen) == 'index') { %> class = "active" <% } %> > <a href= <% if ((chosen) == 'index')  {%>"#" <%} else { %> "/" <%}%> >Index</a></li>
+			<li <% if ((chosen) == 'login') { %> class = "active" <% } %> > <a href= <% if ((chosen) == 'login')  {%>"#" <%} else { %> "/login" <%}%> >Login</a></li>
+			<li <% if ((chosen) == 'reg') { %> class = "active" <% } %> > <a href= <% if ((chosen) == 'reg')  {%>"#" <%} else { %> "/reg" <%}%> >Reg</a></li>
+			<li><a href="/logout">Logout</a></li>
+		</ul>
+		<br>
+		<% if (success) { %>
+		<div class="alert alert-success">
+			<%= success %>
+		</div>
+		<% } %>
+		<% if (error) { %>
+		<div class="alert alert-warning">
+			<%= error %> 
+		</div>
+		<% } %>
