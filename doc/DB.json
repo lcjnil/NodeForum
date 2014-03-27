@@ -1,0 +1,85 @@
+//users
+{
+	"userId": "string",
+	"password": "MD5 string",
+	"information": {
+		"email": "string",
+		"qq": "string",
+		"github": "string",
+		"grade":"string"
+	},
+	"class": "string:admin, member",
+	"level": "integer",
+	"regTime": "Object Date",
+	"following": {
+		"number": "integer",
+		"userId": [
+			"userId1","userId2",
+		]
+	},
+	"follower": {
+		"number": "integer",
+		"userId": [
+			"userId1","userId2",
+		]
+	},
+	"message": [
+		{
+			"title": "string",
+			"content": "string",
+			"userId": "string:sender"
+		},
+	],
+	"invitation":[
+		{
+			"INVITION:(userId+MD5)":"string:used|INVITED PEOPLE"
+		},
+	],
+	"invitedBy": "string:userId",
+	"favoriteThread":[
+		"integer:threadId",
+	]
+}
+
+//forumsNames
+{
+	"forumGroup": {
+		"area":"string",
+		"forumNames": [
+			{
+				"forumId":"integer",
+				"forumName":"string",
+				"forumDescription":"string"
+			}
+		]
+	},
+}
+
+
+//forumsThread
+{
+	"parentForumId": "integer",
+	"parentForumName": "string",
+	"threads":[
+		{
+			"threadTitle": "string",
+			"threadContent": "string",
+			"threadTime": "Date Object",
+			"threadOwner": "string:userId",
+			"threadId": "integer",
+			"responseNumber": "integer"
+		},
+	]
+}
+
+//response
+{
+	"integer:threadId": [
+		{
+			"responseTitle": "string",
+			"responseContent": "string",
+			"responseTime": "Date Object",
+			"responseOwner": "string:userId",
+		}
+	],
+}
