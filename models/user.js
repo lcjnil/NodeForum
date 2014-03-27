@@ -2,7 +2,7 @@ var mongodb = require('./db'); //Bind DB isEmptyObject()
 
 //Obejct
 function User(user) {
-	this.id = user.id;
+	this.userId = user.userId;
 	this.password = user.password;
 	this.email = user.email;
 }
@@ -12,7 +12,7 @@ module.exports = User;
 User.prototype.save = function(callback) {
 	//define an object
 	var user = {
-		id: this.id,
+		userId: this.userId,
 		password: this.password,
 		email: this.email
 	};
@@ -33,8 +33,8 @@ User.prototype.save = function(callback) {
 	})
 }
 
-User.get = function(id, callback) {
-	//find id in DB users
+User.get = function(userId, callback) {
+	//find userId in DB users
 	mongodb.open(function(err, db) {
 		if (err) {
 			return callback(err);
@@ -45,7 +45,7 @@ User.get = function(id, callback) {
 				return callback(err);
 			}
 			collection.findOne({
-				id : id
+				userId : userId
 			}, function(err, user){
 				mongodb.close();
 				if (user) {
