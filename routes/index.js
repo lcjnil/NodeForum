@@ -11,29 +11,25 @@
 /[FORUMNAME] 每个论坛板块的页面
 */
 var crypto = require('crypto'),
-User = require('../models/user.js');
+	User = require('../models/user.js'),
+	Thread = require('../models/thread.js');
 
 module.exports = function(app) {
 	app.get('/', function(req, res) {
-		res.render('index', {
-			title : 'Index',
-			chosen : 'index',
-			success: req.flash('success').toString(),
-			error: req.flash('error').toString(),
-			user: req.session.user
-		})
+		Thread.get(null, function(err, threads) {
+			if (err) {
+      			threads = [];
+    		} 
+			res.render('index', {
+				title : 'Index',
+				success: req.flash('success').toString(),
+				error: req.flash('error').toString(),
+				user: req.session.user,
+				threads:threads
+			})
+		});
 	});
 
-	// app.get('/login', checkNotLogin);
-	// app.get('/login', function(req, res){
-	// 	res.render('login', {
-	// 		title: "Login",
-	// 		chosen: 'login',
-	// 		success: req.flash('success').toString(),
-	// 		error: req.flash('error').toString(),
-	// 		user: req.session.user
-	// 	})
-	// });
 	app.get('/login', function(req, res){
 		res.redirect('back');
 	});
@@ -46,7 +42,7 @@ module.exports = function(app) {
 		var md5 = crypto.createHash('md5'), 
 			password = md5.update(req.body.password).digest('hex');
 		//Get Password
-		User.get(req.body.id, function(err, user) {
+		User.get(req.body.userid, function(err, user) {
 			if (!user) {
 				req.flash('error', '用户不存在!'); 
   				return res.redirect('back');
@@ -72,7 +68,6 @@ module.exports = function(app) {
 	app.get('/reg', function(req, res) {
 		res.render('reg', {
 			title: 'Register',
-			chosen: 'reg',
 			success: req.flash('success').toString(),
 			error: req.flash('error').toString(),
 			user: req.session.user
@@ -112,8 +107,29 @@ module.exports = function(app) {
 			    res.redirect('/');//注册成功后返回主页
 			});
 		});
-	});//END app.post(reg)	
-};
+	});//END app.post(reg)
+
+	app.post('/post', checkLogin);
+	app.post('/post', function(req, res) {
+		var currentUser = req.session.user;
+		console.log(currentUser);
+		var thread = new Thread(req.body.title, req.body.content, currentUser.id);
+		thread.save(function(err){
+			if (err) {
+				req.flash('error', err);
+				return res.redirect('/post');
+			}
+			req.flash('success', '发布成功!');
+    		res.redirect('/');
+		});
+	});
+	
+	app.use(function(req, res, next) {
+	    var err = new Error('Not Found');
+	    err.status = 404;
+	    next(err);
+	});
+};//END catch app
 
 function checkLogin(req, res, next) {
   if (!req.session.user) {

@@ -1,3 +1,10 @@
 <%- include header %>
-这是主页
+<% threads.forEach(function (thread, index) { %>
+  <p><h2><a href="#"><%= thread.threadTitle %></a></h2></p>
+  <p>
+    作者：<a href="#"><%= thread.threadOwner %></a> |
+    日期：<%= thread.time.minute %>
+  </p>
+  <p><%- thread.threadContent %></p>
+<% }) %>
 <%- include footer %>

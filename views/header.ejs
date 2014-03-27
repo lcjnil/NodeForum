@@ -27,6 +27,7 @@
 						<form class="navbar-form navbar-right" role="form" action="/logout">
 							<button type="submit" class="btn btn-success">Log out</button>
 						</form>
+						<a class="navbar-text navbar-right">当前用户:<%= user.id%></a>
 					<% } else {%>
 
 					<form class="navbar-form navbar-right" method="post" role="form" action="/login">

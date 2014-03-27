@@ -26,13 +26,23 @@
 
 ## 数据库
 基于MongoDB
+
 ###已完成
-####Users
+####users
 保存用户信息
 * id
 * passwd
-* name 未完成
 * email
+* name 未完成
+
+####threads
+保存帖子信息
+* threadTitle
+* threadContent
+* threadOwner
+
+
+* threadID 未完成
 
 ###待加入
 ####Forums
@@ -41,13 +51,6 @@
 * forumEName
 * forumID
 * forumDescribe
-
-####Thread
-保存帖子信息
-* threadID
-* threadTitle
-* threadContent
-* threadOwner
 
 ####ThreadResponse
 保存回复信息
