@@ -1,8 +1,9 @@
-//users
+//user
 {
 	"userId": "string",
 	"password": "MD5 string",
 	"information": {
+		"nickname":"string",
 		"email": "string",
 		"qq": "string",
 		"github": "string",
@@ -38,10 +39,13 @@
 	"invitedBy": "string:userId",
 	"favoriteThread":[
 		"integer:threadId",
+	],
+	"thread": [
+		"threadId1", "threadId2",
 	]
 }
 
-//forumsNames
+//forumsName
 {
 	"forumGroup": {
 		"area":"string",
@@ -49,7 +53,10 @@
 			{
 				"forumId":"integer",
 				"forumName":"string",
-				"forumDescription":"string"
+				"forumDescription":"string",
+				"forumThread": [
+					"threadId1", "threadId2",
+				]
 			}
 		]
 	},

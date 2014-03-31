@@ -1,13 +1,13 @@
-var login = require('./bin/login.js'),
-	root = require('./bin/root.js'),
-	logout = require('./bin/logout.js'),
-	reg = require('./bin/reg.js'),
-	post = require('./bin/post.js');
+var login = require('./bin/root/login.js'),
+	root = require('./bin/root/root.js'),
+	logout = require('./bin/root/logout.js'),
+	reg = require('./bin/root/reg.js'),
+	setting = require('./bin/root/setting.js');
 
 module.exports = {
 	root: root,
 	login: login,
 	logout: logout,
 	reg: reg,
-	post: post
+	setting: setting
 };
