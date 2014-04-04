@@ -38,6 +38,9 @@ function post(req, res) {
 	if (req.body.grade) {
 		update.grade = req.body.grade;
 	}
+	if (req.body.description) {
+		update.description = req.body.description;
+	}
 	console.log(update);
 	User.findOne({userId:req.session.user.userId}, function(err, user){
 		if (err) {

@@ -14,7 +14,8 @@ var UserSchema = new mongoose.Schema({
 		email: String,
 		qq: String,
 		github: String,
-		grade:String
+		grade:String,
+		description:String
 	},
 	class: {type:String, default:"member"},
 	level: Number,

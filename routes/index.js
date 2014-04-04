@@ -33,14 +33,14 @@ module.exports = function(app) {
 	app.post('/reg', checkNotLogin);
 	app.post('/reg', route.reg.post);//END app.post(reg)
 
-	// app.post('/post', checkLogin);
-	// app.post('/post', route.post.post);
-
-//	app.get('/setting', checkLogin);
+	app.get('/setting', checkLogin);
 	app.get('/setting', route.setting.get)
 
-//	app.post('/setting', checkLogin);
+	app.post('/setting', checkLogin);
 	app.post('/setting', route.setting.post)
+
+	app.get('/admin', checkLogin);
+	app.get('/admin', route.admin.get);
 
 	app.use(function(req, res, next) {
 		var err = new Error('Not Found');

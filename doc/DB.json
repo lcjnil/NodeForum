@@ -1,48 +1,25 @@
 //user
 {
-	"userId": "string",
-	"password": "MD5 string",
-	"information": {
-		"nickname":"string",
-		"email": "string",
-		"qq": "string",
-		"github": "string",
-		"grade":"string"
+	userId: String,
+	password: String,
+	information: {
+		nickname:String,
+		email: String,
+		qq: String,
+		github: String,
+		grade:String,
+		description:String
 	},
-	"class": "string:admin, member",
-	"level": "integer",
-	"regTime": "Object Date",
-	"following": {
-		"number": "integer",
-		"userId": [
-			"userId1","userId2",
-		]
-	},
-	"follower": {
-		"number": "integer",
-		"userId": [
-			"userId1","userId2",
-		]
-	},
-	"message": [
-		{
-			"title": "string",
-			"content": "string",
-			"userId": "string:sender"
-		},
-	],
-	"invitation":[
-		{
-			"INVITION:(userId+MD5)":"string:used|INVITED PEOPLE"
-		},
-	],
-	"invitedBy": "string:userId",
-	"favoriteThread":[
-		"integer:threadId",
-	],
-	"thread": [
-		"threadId1", "threadId2",
-	]
+	class: {type:String, default:"member"},
+	level: Number,
+	regTime: {type:Date, default:Date.now},
+	following: [Number],
+	follower: [String],
+	message: [MessageSchema],
+	invitation:[String],
+	invitedBy: String,
+	favoriteThread:[Number],
+	thread: [Number]
 }
 
 //forumsName
