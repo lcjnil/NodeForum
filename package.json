@@ -17,6 +17,7 @@
     "connect-mongo": "*",
     "connect-flash": "*",
     "markdown":"*",
-    "mongoose":"*"
+    "mongoose":"*",
+    "eventproxy":"*"
   }
 }
