@@ -4,7 +4,7 @@ var forumNameSchema = new mongoose.Schema({
 	forumId: Number,
 	name: String,
 	description: String,
-	parent: String,
+	parent: {type: mongoose.Schema.Types.ObjectId, ref: 'forumGroup'},
 	threadId: [Number]
 },{
 	collection: 'forumName'
@@ -12,6 +12,7 @@ var forumNameSchema = new mongoose.Schema({
 
 var forumGroupSchema = new mongoose.Schema({
 	area: String,
+	groupId: Number,
 	forumNames:[{type: mongoose.Schema.Types.ObjectId, ref: 'forumName'}]
 },{
 	collection: 'forumGroup'
@@ -25,4 +26,4 @@ var forumGroup = mongoose.model('forumGroup', forumGroupSchema);
 module.exports = {
 	forumName: forumName,
 	forumGroup: forumGroup
-}
+};

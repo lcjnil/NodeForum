@@ -6,3 +6,7 @@ body {
 #leftbar .userFo {
 	text-align: center;
 } 
+
+#table * {
+	text-align: center;
+}

@@ -5,7 +5,14 @@
 		<table class="table table-bordered">
 
 		<thead>
-			<th><%= forumGroup.area%></th>
+			<th colspan="3">GroupArea: <%= forumGroup.area%></th>
+			<th>
+				<form action="" method="post">
+					<button class="btn btn-sm btn-danger" type="submit" name="deleteGroupId" value="<%= forumGroup.groupId %>">
+						<span class="glyphicon glyphicon-remove"></span>
+					</button>
+				</form>
+			</th>
 			<tr>
 				<th>Forum No.</th>
 				<th>Forum Name</th>
@@ -21,28 +28,45 @@
 					<td><%=	forumName.name %></td>
 					<td><%=	forumName.description %></td>
 					<td> 
-						<button class="btn btn-sm btn-default" type="button">
-							<span class="glyphicon glyphicon-phone"></span> Delete
+					<form action="" method="post">
+						<button class="btn btn-sm btn-danger" type="submit" name="deleteForumId" value="<%= forumName.forumId %>">
+							<span class="glyphicon glyphicon-remove"></span>
 						</button>
+					</form>
 					</td>
 				<tr>
-			<%	if (index == forumGroup.forumNames.length-1) { %>
-					<form action="">
-						<td><input type="text" name="forumId"></td>
-						<td><input type="text" name="name"></td>
-						<td><input type="text" name="description"></td>
-						<td>
-							<button type="submit" class="btn btn-default" >
-								Submit
-							</button>
-						</td>
-					</form>
-			<%	} %>
 		<%	}); %>	
+				<form action="" method="post">
+					<td><input type="number" name="addForumId"></td>
+					<td><input type="text" name="name"></td>
+					<td><input type="text" name="description"></td>
+					<td>
+						<button type="submit" class="btn btn-sm btn-primary" name="groupId" value="<%= forumGroup.groupId %>"  ><span class="glyphicon glyphicon-plus"></span></button>
+					</td>
+				</form>
 		</tbody>
-		
 		</table>
 <%	}); %>
+</div>
+
+<div class="createNewForumGroup">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<p>Add new Forum Group</p>
+		</div>
+		<div class="panel-body">
+			<form class="form-inline" action="" method="post" role="form">
+				<div class="form-group">
+					<input type="number" class="form-control" name="addGroupId" placeholder="Enter the Group Id">
+				</div>
+				<div class="form-group ">
+					<input type="" class="form-control" name="area" placeholder="Enter the Area">
+				</div>
+				
+				<button type="submit" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-plus"></button>
+			</form>
+		</div>
+	</div>
 </div>
 
 
