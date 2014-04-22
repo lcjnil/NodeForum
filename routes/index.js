@@ -2,14 +2,6 @@
 * 当模块的文件名是index.js，
 * 加载模块时可以使用模块所在目录的路径代替模块文件路径
 */
-/*
-/ 基本主页
-/login 登陆界面
-/logout 退出
-/reg 注册界面
-/user 全部用户信息页面
-/[FORUMNAME] 每个论坛板块的页面
-*/
 var crypto = require('crypto'),
 	User = require('../models/user.js'),
 	Thread = require('../models/thread.js');
@@ -39,11 +31,11 @@ module.exports = function(app) {
 	app.post('/setting', checkLogin);
 	app.post('/setting', route.setting.post);
 
-	app.get('/admin', checkLogin);
-	app.get('/admin', route.admin.get);
+	app.get('/admin/forum', checkLogin);
+	app.get('/admin/forum', route.forum.get);
 
-	app.post('/admin', checkLogin);
-	app.post('/admin', route.admin.post);
+	app.post('/admin/forum', checkLogin);
+	app.post('/admin/forum', route.forum.post);
 
 	app.use(function(req, res, next) {
 		var err = new Error('Not Found');

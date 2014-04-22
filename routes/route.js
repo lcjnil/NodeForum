@@ -3,7 +3,7 @@ var login = require('./bin/root/login.js'),
 	logout = require('./bin/root/logout.js'),
 	reg = require('./bin/root/reg.js'),
 	setting = require('./bin/root/setting.js'),
-	admin = require('./bin/admin/root.js');
+	forum = require('./bin/admin/forum.js');
 
 module.exports = {
 	root: root,
@@ -11,5 +11,5 @@ module.exports = {
 	logout: logout,
 	reg: reg,
 	setting: setting,
-	admin: admin
+	forum: forum
 };
