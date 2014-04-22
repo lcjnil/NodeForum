@@ -59,6 +59,8 @@ app.use(function(err, req, res, next) {
     });
 });
 
-app.set('port', process.env.PORT || 3000);
-app.listen(app.get('port'));
+//app.set('port', process.env.PORT || 3000);
+//app.listen(app.get('port'));
 routes(app);
+
+module.exports = app;

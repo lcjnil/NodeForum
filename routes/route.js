@@ -1,9 +1,10 @@
-var login = require('./bin/root/login.js'),
-	root = require('./bin/root/root.js'),
-	logout = require('./bin/root/logout.js'),
-	reg = require('./bin/root/reg.js'),
-	setting = require('./bin/root/setting.js'),
-	forum = require('./bin/admin/forum.js');
+var login = require('./bin/root/login.js');
+var root = require('./bin/root/root.js');
+var logout = require('./bin/root/logout.js');
+var reg = require('./bin/root/reg.js');
+var setting = require('./bin/root/setting.js');
+var forum = require('./bin/admin/forum.js');
+var admin = require('./bin/admin/root.js');
 
 module.exports = {
 	root: root,
@@ -11,5 +12,6 @@ module.exports = {
 	logout: logout,
 	reg: reg,
 	setting: setting,
-	forum: forum
+	forum: forum,
+	admin: admin
 };

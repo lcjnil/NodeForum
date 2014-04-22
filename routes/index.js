@@ -31,6 +31,9 @@ module.exports = function(app) {
 	app.post('/setting', checkLogin);
 	app.post('/setting', route.setting.post);
 
+	app.get('/admin', checkLogin); 
+	app.get('/admin', route.admin.get)
+
 	app.get('/admin/forum', checkLogin);
 	app.get('/admin/forum', route.forum.get);
 
