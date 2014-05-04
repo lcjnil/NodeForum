@@ -1,76 +1,19 @@
-var mongodb = require('./db'),
-	markdown = require('markdown').markdown;
+var mongoose = require('./mongoose');
 
-function Thread(threadTitle, threadContent, threadOwner) {
-	this.threadTitle = threadTitle;
-	this.threadContent = threadContent;
-	this.threadOwner = threadOwner;
-}
+var threadScheme = new mongoose.Schema({
+	threadId: Number,
+	author:{type: mongoose.Schema.Types.ObjectId, ref: 'user'},
+	firstDate:{type:Date, default:Date.now},
+	lastDate:{type:Date, default:Date.now},
+	forumId: Number,
+	title:String,
+	content:String
+},{
+	collection: 'thread'
+})
 
-module.exports = Thread;
+var Thread = mongoose.model('thread', threadScheme);
 
-Thread.prototype.save = function(callback) {
-	console.log(this.threadOwner);
-	var date = new Date();
-	var time = {
-		date: date,
-		year : date.getFullYear(),
-		month : date.getFullYear() + "-" + (date.getMonth()+1),
-		day : date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate(),
-		minute : date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes()
-	}
-	var thread = {
-		time: time,
-		threadTitle: this.threadTitle,
-		threadContent: this.threadContent,
-		threadOwner: this.threadOwner
-	};
-
-	mongodb.open(function(err, db) {
-		if (err) {
-			return callback(err);
-		}
-		db.collection('threads', function(err, collection) {
-			if (err){
-				return callback(err);
-			}
-			collection.insert(thread, {
-				safe: true
-			}, function(err, thread) {
-				mongodb.close();
-				callback(null);
-			});
-		});
-	});
-}
-
-Thread.get = function(name, callback) {
-	mongodb.open(function(err, db){
-		if (err) {
-			return callback(err);
-		}
-		db.collection('threads', function(err, collection) {
-			if (err){
-				mongodb.close();
-				return callback(err);
-			}
-			var query = {};
-			if (name) {
-				query.name = name;
-			}
-			//Base on query search
-			collection.find(query).sort({
-				time: -1
-			}).toArray(function (err, docs) {
-				mongodb.close();
-				if (err) {
-          			callback(err);//失败！返回 err
-      			}
-      			docs.forEach(function (doc) {
-					doc.threadContent = markdown.toHTML(doc.threadContent);
-				});
-		        callback(null, docs);//成功！以数组形式返回查询的结果
-		    });
-		});
-	})
+module.exports = {
+	Thread: Thread
 }

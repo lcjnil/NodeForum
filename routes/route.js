@@ -5,6 +5,7 @@ var reg = require('./bin/root/reg.js');
 var setting = require('./bin/root/setting.js');
 var forum = require('./bin/admin/forum.js');
 var admin = require('./bin/admin/root.js');
+var postThread = require('./bin/root/postThread.js')
 
 module.exports = {
 	root: root,
@@ -13,5 +14,6 @@ module.exports = {
 	reg: reg,
 	setting: setting,
 	forum: forum,
-	admin: admin
+	admin: admin,
+	postThread: postThread
 };

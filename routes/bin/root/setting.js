@@ -1,5 +1,5 @@
-var crypto = require('crypto'),
-User = require('../../../models/user.js').User;
+var crypto = require('crypto');
+var User = require('../../../models/user.js').User;
 
 function get(req, res) {
 	res.render('setting', {
@@ -48,7 +48,7 @@ function post(req, res) {
 			return res.redirect('back');
 		}
 		user.information = mergeObject(user.information, update);	
-		user.save(function(err){	
+		user.save(function(err){
 			if (err){
 				req.flash('error', err);
 				return res.redirect('back');

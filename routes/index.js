@@ -31,7 +31,7 @@ module.exports = function(app) {
 	app.post('/setting', checkLogin);
 	app.post('/setting', route.setting.post);
 
-	app.get('/admin', checkLogin); 
+	app.get('/admin', checkLogin);
 	app.get('/admin', route.admin.get)
 
 	app.get('/admin/forum', checkLogin);
@@ -39,6 +39,9 @@ module.exports = function(app) {
 
 	app.post('/admin/forum', checkLogin);
 	app.post('/admin/forum', route.forum.post);
+
+	app.post('/postThread', checkLogin);
+	app.post('/postThread', route.postThread.post);
 
 	app.use(function(req, res, next) {
 		var err = new Error('Not Found');

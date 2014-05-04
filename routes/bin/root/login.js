@@ -1,5 +1,5 @@
-var crypto = require('crypto'),
-	User = require('../../../models/user.js').User;
+var crypto = require('crypto');
+var User = require('../../../models/user.js').User;
 
 function post(req, res) {
 	if (req.body.userId.length==0) {
