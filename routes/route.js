@@ -3,9 +3,11 @@ var root = require('./bin/root/root.js');
 var logout = require('./bin/root/logout.js');
 var reg = require('./bin/root/reg.js');
 var setting = require('./bin/root/setting.js');
-var forum = require('./bin/admin/forum.js');
+var forumMgr= require('./bin/admin/forum.js');
 var admin = require('./bin/admin/root.js');
-var postThread = require('./bin/root/postThread.js')
+var postThread = require('./bin/root/postThread.js');
+var forum = require('./bin/root/forum.js');
+var thread = require('./bin/root/thread.js');
 
 module.exports = {
 	root: root,
@@ -13,7 +15,9 @@ module.exports = {
 	logout: logout,
 	reg: reg,
 	setting: setting,
-	forum: forum,
+	forumMgr: forumMgr,
 	admin: admin,
-	postThread: postThread
+	postThread: postThread,
+	forum: forum,
+	thread: thread
 };

@@ -1,4 +1,5 @@
 var Thread = require('../../../models/thread.js').Thread;
+var ForumName = require('../../../models/forumName.js').forumName;
 var markdown = require('markdown').markdown;
 var EventProxy = require('eventproxy');
 
@@ -23,14 +24,25 @@ function post(req, res) {
 			content: req.body.content,
 			threadId: threadId
 		});
+		console.log(thread);
 		thread.save(function(err){
 			if (err) {
-				req.flash('error', 'thread SAVE ERR');
+				req.flash('error', 'thread SAVE ERR1');
 				return res.redirect('back');
 			}
-			req.flash('success', 'success posted!');
-			res.redirect('back');
-		})
+			ForumName.findOne({forumId: req.body.forumId}, function(err, oneForum){
+				oneForum.threadId.push(thread);
+				console.log(oneForum);
+				oneForum.save(function(err){
+					if (err) {
+						req.flash('error', 'thread SAVE ERR2');
+						return res.redirect('back');
+					}
+					req.flash('success', 'POST SUCCESS');
+					res.redirect('back');
+				});
+			});
+		});
 	})
 }
 

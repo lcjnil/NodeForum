@@ -16,9 +16,6 @@ module.exports = function(app) {
 	app.post('/login', checkNotLogin);
 	app.post('/login', route.login.post);
 
-	app.get('/logout', checkLogin);
-	app.get('/logout', route.logout.get);
-
 	app.get('/reg', checkNotLogin);
 	app.get('/reg', route.reg.get);
 
@@ -35,13 +32,19 @@ module.exports = function(app) {
 	app.get('/admin', route.admin.get)
 
 	app.get('/admin/forum', checkLogin);
-	app.get('/admin/forum', route.forum.get);
+	app.get('/admin/forum', route.forumMgr.get);
 
 	app.post('/admin/forum', checkLogin);
-	app.post('/admin/forum', route.forum.post);
+	app.post('/admin/forum', route.forumMgr.post);
 
 	app.post('/postThread', checkLogin);
 	app.post('/postThread', route.postThread.post);
+
+	//get all the threads based on the forumName
+	app.get('/forum/:forumName', route.forum.get);
+
+	//get one thread?~
+	app.get('/thread/:threadId', route.thread.get);
 
 	app.use(function(req, res, next) {
 		var err = new Error('Not Found');

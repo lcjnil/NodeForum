@@ -1,0 +1,17 @@
+<!-- this is for Thread!-->
+<%- include header %>
+<div class="col-md-9 col-lg-9">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<%= thread.title%>
+		</div>
+		<div class="panel-body">
+			<%- thread.content %>
+		</div>
+	</div>
+</div>
+
+<div class="col-md-3 col-lg-3">
+	<%- include leftbar.ejs %>
+</div>
+<%- include footer %>

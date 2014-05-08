@@ -53,15 +53,15 @@ function post(req, res) {
 				req.flash('error', err);
 				return res.redirect('back');
 			}
-			req.flash('error', "REFRESHED!");
+			req.flash('success', "REFRESHED!");
 			return res.redirect('/');
 		});
 	});
 }
 
 module.exports = {
-	post: post,
-	get: get
+	get: get,
+	post: post
 }
 
 function mergeObject(obj1,obj2){

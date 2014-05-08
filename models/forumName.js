@@ -5,7 +5,7 @@ var forumNameSchema = new mongoose.Schema({
 	name: String,
 	description: String,
 	parent: {type: mongoose.Schema.Types.ObjectId, ref: 'forumGroup'},
-	threadId: [Number]
+	threadId: [{type: mongoose.Schema.Types.ObjectId, ref: 'thread'}]
 },{
 	collection: 'forumName'
 });
