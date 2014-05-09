@@ -33,9 +33,15 @@ function get(req, res) {
 					ep.emit('authorPopulate', newThread);
 				});
 			});
+			if (threadId.length==0){
+				ep.emit('done');
+			}
 		})
 		ep.after('authorPopulate', forum.threadId.length-1, function(newThread){
-			console.log(newThread);
+			ep.emit('done', newThread);
+		});
+		ep.all('done', function(newThread){
+			if (!newThread) newThread = [];
 			res.render('./forum', {
 				title : req.params.forumName,
 				success: req.flash('success').toString(),

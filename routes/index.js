@@ -16,6 +16,9 @@ module.exports = function(app) {
 	app.post('/login', checkNotLogin);
 	app.post('/login', route.login.post);
 
+	app.get('/logout', checkLogin);
+	app.get('/logout', route.logout.get);
+
 	app.get('/reg', checkNotLogin);
 	app.get('/reg', route.reg.get);
 

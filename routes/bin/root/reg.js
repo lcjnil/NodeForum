@@ -10,8 +10,8 @@ function get(req, res) {
 	});
 }
 function post (req, res) {
-	var password = req.body.password,
-	repeatpassword = req.body.repeatpassword;
+	var password = req.body.password;
+	var repeatpassword = req.body.repeatpassword;
 	if (repeatpassword != password) {
 		req.flash('error', '两次输入的密码不一致!');
 		return res.redirect('/reg');
@@ -32,7 +32,7 @@ function post (req, res) {
 		newUser.save(function(err){
 			if (err) {
 				req.flash('error', err);
-	 			return res.redirect('/reg');	
+	 			return res.redirect('/reg');
 			}
 	 		req.session.user = newUser;//用户信息存入 session
 	 		req.flash('success', '注册成功!');
