@@ -8,7 +8,7 @@ var threadScheme = new mongoose.Schema({
 	forumId: Number,
 	title:String,
 	content:String,
-	responseId: {type: mongoose.Schema.Types.ObjectId, ref: 'response'}
+	responseId: [{type: mongoose.Schema.Types.ObjectId, ref: 'response'}]
 },{
 	collection: 'thread'
 })
