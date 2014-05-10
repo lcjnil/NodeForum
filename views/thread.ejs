@@ -6,6 +6,11 @@
 			<%= thread.title%>
 		</div>
 		<div class="panel-body">
+			<form method="post" action="">
+				<button type="submit" class="btn btn-primary" name="edit" value="1">
+					编辑
+				</button>
+			</form>
 			<%- thread.content %>
 		</div>
 	</div>

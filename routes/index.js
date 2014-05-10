@@ -48,6 +48,8 @@ module.exports = function(app) {
 
 	//get one thread?~
 	app.get('/thread/:threadId', route.thread.get);
+	//edit or submit response to THREAD
+	app.post('/thread/:threadId', route.thread.post);
 
 	app.use(function(req, res, next) {
 		var err = new Error('Not Found');

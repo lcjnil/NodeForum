@@ -1,61 +1,26 @@
-#说明
-基于Node.js MongoDB Bootstrap
-目前是alpha中的alpha
-##路由
-###已完成：
-/ - index
+#README
+##简述
+一个基于Node.js + Express + MongoDB 的论坛程序。
 
-/login - 登陆界面
+##目的
+~~练习Node~~打造一个校园程序员交流平台
 
-/logout - 退出
+##设计功能
+- 邀请制会员制度（严格审核！）
+- 板块制
+- Markdown标记的发帖/回复
+- 开放的API~~我在幻想会发展很大很大~~
 
-/reg - 注册界面
+##后台设计
+基于Node+Express，模板引擎为EJS；不考虑用Jade，因为其低性能。
 
-###待加入：
-/user - 全部用户信息页面
+##数据库设计
+数据库驱动采用的是Mongoose，一个封装很好的数据库驱动（感觉是废话）
+具体设计详情见/model，直观，详细
 
-/user/setting - 用户信息设置
+##页面设计
+目前的页面设计，只考虑用Bootstrap框架打出基本的功能，日后加入AJAX
 
-/user/find - 用户查找
-
-/user/USERNAME - 个人主页
-
-/FORUMNAME - 每个论坛板块的页面
-
-/FORUMNAME/THREADID - 每个帖子的页面
-
-## 数据库
-基于MongoDB
-
-###已完成
-####users
-保存用户信息
-* id
-* passwd
-* email
-* name 未完成
-
-####threads
-保存帖子信息
-* threadTitle
-* threadContent
-* threadOwner
-
-* threadID 未完成
-
-###待加入
-####Forums
-保存板块信息
-* forumName
-* forumEName
-* forumID
-* forumDescribe
-
-####ThreadResponse
-保存回复信息
-* parentID
-* post
-* postTitle
-* postContent
-* postOwner
-
+##进度
+以后的每次commit我会提交进度（算是一个激励）
+* 2014-4-10 完成了帖子的修改，修复了EventProxy代理的几个BUG
