@@ -1,4 +1,6 @@
 #README
+Ok,这个项目已经坑掉了= =
+
 ##简述
 一个基于Node.js + Express + MongoDB 的论坛程序。
 
